@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Peta Petualangan: Pengertian Pendidikan</title>
+<style>
+:root{--ink:#2B2A1F;--parch:#FBF3DC;--card:#FFFDF6;--sun:#F28C28;--deep:#14523A;box-sizing:border-box}
+*,*::before,*::after{box-sizing:inherit}
+html,body{height:100%;margin:0;overflow:hidden;background:var(--deep);color:var(--ink);font-family:"Segoe UI",Calibri,"Helvetica Neue",Arial,sans-serif}
+button{font:inherit;color:inherit;cursor:pointer}
+:focus-visible{outline:4px solid #1D4ED8;outline-offset:3px;box-shadow:0 0 0 7px #fff}
+.skip{position:absolute;left:-999px;top:8px;background:#fff;padding:10px 14px;z-index:99;border-radius:10px}.skip:focus{left:8px}
+#deck{position:fixed;inset:0}
+.slide{position:absolute;inset:0 0 96px 0;background:var(--bg);padding:clamp(12px,2vw,26px);display:flex}
+.slide[hidden]{display:none}
+.scroll{position:relative;flex:1;min-height:0;background:radial-gradient(circle at 15% 8%,#fff8,transparent 45%),var(--parch);border:4px solid var(--ac);border-radius:28px;box-shadow:0 8px 0 var(--ac),0 16px 30px rgba(0,0,0,.2);padding:clamp(14px,2.4vw,36px) clamp(18px,4vw,64px);display:flex;flex-direction:column;justify-content:center;gap:clamp(10px,1.8vh,20px);overflow:auto}
+.kicker{align-self:flex-start;background:var(--ac);color:#fff;font-weight:700;font-size:clamp(14px,1.5vw,18px);padding:6px 16px;border-radius:99px;letter-spacing:.04em;animation:pop .5s both}
+h1,h2{margin:0;font-family:"Palatino Linotype","Book Antiqua",Palatino,"URW Palladio L",serif;font-weight:700;line-height:1.1;font-size:clamp(30px,4.6vw,54px);outline:none;width:fit-content;max-width:100%}
+h2::after{content:"";display:block;height:5px;margin-top:8px;background:repeating-linear-gradient(90deg,var(--ac) 0 14px,transparent 14px 22px);transform-origin:left;animation:draw .8s .2s both}
+h1{font-size:clamp(42px,7.4vw,92px)}
+h3,.q,.quote{font-family:"Palatino Linotype","Book Antiqua",Palatino,serif;font-weight:700}
+.sub{font-size:clamp(20px,2.5vw,30px);font-weight:600;margin:0}
+.grid{display:grid;gap:clamp(12px,1.6vw,22px);grid-template-columns:repeat(auto-fit,minmax(min(100%,230px),1fr))}
+.card{position:relative;overflow:hidden;background:var(--card);border:2px solid #CDBF99;border-left:8px solid var(--ac);border-radius:14px;box-shadow:0 4px 12px rgba(43,42,31,.14);padding:clamp(12px,1.6vw,22px);font-size:clamp(19px,2.2vw,27px);line-height:1.25;color:var(--ink);text-align:left;animation:pop .55s both;transition:box-shadow .2s}
+.card h3{margin:0 0 6px;font-size:clamp(22px,2.5vw,31px)}.card p{margin:0}
+.card::after{content:"";position:absolute;inset:0;background:radial-gradient(circle at var(--gx,50%) var(--gy,50%),rgba(255,255,255,.65),transparent 55%);opacity:0;transition:opacity .2s;pointer-events:none}
+.card:hover::after{opacity:1}.card.hov:hover{box-shadow:0 10px 22px rgba(43,42,31,.25)}
+.card.on{background:#FCE7B2;box-shadow:0 10px 22px rgba(43,42,31,.25)}
+.chip{display:inline-block;background:#fff;color:var(--ink);border:2px solid var(--ac);border-radius:99px;padding:3px 14px;font-weight:700;font-size:clamp(17px,1.9vw,23px);margin:4px 6px 0 0;animation:pop .5s both}
+.tag{display:inline-block;background:var(--ac);color:#fff;font-weight:800;font-size:clamp(15px,1.7vw,21px);border-radius:8px;padding:2px 10px;margin-bottom:4px}
+.stag>*:nth-child(1){animation-delay:.15s}.stag>*:nth-child(2){animation-delay:.3s}.stag>*:nth-child(3){animation-delay:.45s}.stag>*:nth-child(4){animation-delay:.6s}.stag>*:nth-child(5){animation-delay:.75s}.stag>*:nth-child(6){animation-delay:.9s}
+.flow{display:flex;flex-wrap:wrap;gap:12px;align-items:stretch}.flow .card{flex:1 1 170px;text-align:center}.flow .arr{align-self:center;font-size:34px;font-weight:900;color:var(--ac);animation:pulse 1.6s infinite}
+.q{margin:0;font-size:clamp(28px,4.2vw,50px);animation:pop .6s both}.q:nth-of-type(2){animation-delay:.9s}.q:nth-of-type(3){animation-delay:1.8s}
+.note{background:#FCE7B2;border:2px solid var(--ac);border-radius:12px;padding:12px 20px;font-size:clamp(20px,2.3vw,28px);font-weight:700;max-width:640px;box-shadow:0 4px 12px rgba(43,42,31,.14)}
+.nb{min-width:48px;min-height:48px;padding:0 14px;border:2px solid var(--ink);border-radius:10px;background:var(--parch);color:var(--ink);font-weight:800;transition:transform .1s}
+.nb:active{transform:scale(.95)}.nb.go{background:var(--sun)}.nb[aria-pressed=false].t{opacity:.7}
+.quote{font-size:clamp(30px,4.8vw,58px);line-height:1.15;margin:0;animation:pop .8s both}
+.deco{position:absolute;top:10px;right:18px;font-size:clamp(28px,3.4vw,48px);pointer-events:none;animation:float 5s ease-in-out infinite}
+.radial{position:relative;width:min(100%,50vh,500px);aspect-ratio:1;margin:0 auto}
+.radial .card{position:absolute;width:34%;transform:translate(-50%,-50%);text-align:center;padding:8px;font-size:clamp(15px,1.9vw,23px);font-weight:700;animation:fromc .8s both}
+.radial .mid{position:absolute;left:50%;top:50%;width:30%;aspect-ratio:1;transform:translate(-50%,-50%);border-radius:50%;background:var(--ac);color:#fff;display:grid;place-items:center;text-align:center;font-weight:800;font-size:clamp(15px,1.9vw,23px);z-index:1}
+.radial svg{position:absolute;inset:0;width:100%;height:100%}
+#bar{position:fixed;left:0;right:0;bottom:0;height:96px;background:var(--deep);border-top:4px solid var(--sun);display:flex;align-items:center;gap:8px;padding:0 clamp(8px,2vw,24px) 0 224px;z-index:20;color:#fff}
+#prog{position:absolute;left:0;top:-8px;height:8px;background:var(--sun);width:0;transition:width .6s}
+#cnt{font-weight:900;font-size:20px;min-width:66px;text-align:center}
+#loc{font-weight:700;font-size:17px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;min-width:0}
+.sp{flex:1}
+#map{position:fixed;left:10px;bottom:8px;width:200px;height:112px;z-index:21;border:3px solid var(--sun);border-radius:14px;background:#BFE6EE;overflow:hidden;cursor:pointer;box-shadow:0 4px 14px rgba(0,0,0,.35)}
+#map.big{left:50%;bottom:auto;top:50%;transform:translate(-50%,-50%);width:min(94vw,calc((100vh - 30px)*1.78));height:auto;aspect-ratio:1000/560;z-index:41;cursor:default;border-width:5px}
+#map .lb{display:none}#map.big .lb{display:block}
+#map .nd{cursor:pointer}#map:not(.big) .nd{pointer-events:none}
+.nd circle{fill:var(--parch);stroke:var(--ink);stroke-width:3}.nd.v circle{fill:var(--sun)}.nd.cur circle{fill:#fff;stroke:#B91C1C;stroke-width:5}
+.nd text{font:700 15px "Segoe UI",Arial,sans-serif;fill:var(--ink);text-anchor:middle}
+.nd .lb{font:700 18px "Palatino Linotype",Palatino,serif;fill:var(--deep);stroke:var(--parch);stroke-width:5px;paint-order:stroke}
+#map.big .nd:hover circle,#map.big .nd:focus-visible circle{stroke:#1D4ED8}
+#wk .bob{transform:scale(2.6);transform-origin:0 0}#map.big #wk .bob{transform:scale(1.1)}
+#wk.walking .bob{animation:bob .3s infinite}
+#mb{position:fixed;inset:0;background:rgba(10,40,28,.75);z-index:40}
+#mb[hidden]{display:none}
+#glow{position:fixed;width:22px;height:22px;margin:-11px 0 0 -11px;border-radius:50%;background:#e11d48;box-shadow:0 0 16px 6px rgba(225,29,72,.55);pointer-events:none;z-index:50;display:none;left:-99px}body.laser #glow{display:block}
+#pen{position:fixed;inset:0;width:100%;height:100%;z-index:8;pointer-events:none}#pen.on{pointer-events:auto;cursor:crosshair}
+#pal{border:3px solid var(--ink);border-radius:16px;width:min(560px,92vw);padding:14px;background:var(--parch)}
+#pal::backdrop{background:#0a281ccc}
+#pq{width:100%;font:inherit;font-size:22px;padding:10px;border:2px solid var(--ink);border-radius:10px}
+#pl{list-style:none;margin:10px 0 0;padding:0;max-height:50vh;overflow:auto}#pl li{padding:10px;border-radius:8px;font-size:20px;cursor:pointer}#pl li[aria-selected=true]{background:var(--deep);color:#fff}
+#hint{position:fixed;left:50%;bottom:112px;transform:translateX(-50%);background:var(--ink);color:#fff;padding:10px 18px;border-radius:99px;font-size:17px;z-index:30;text-align:center;max-width:92vw}#hint[hidden]{display:none}
+.cf{position:absolute;top:-20px;width:12px;height:16px;border-radius:3px;animation:fall 3.2s linear 1 both;pointer-events:none;z-index:1}
+.slide.in-r{animation:inR .5s ease both}.slide.in-l{animation:inL .5s ease both}
+@keyframes inR{from{opacity:0;transform:translateX(70px)}}@keyframes inL{from{opacity:0;transform:translateX(-70px)}}
+@keyframes pop{from{opacity:0;transform:translateY(22px) scale(.95)}}@keyframes draw{from{transform:scaleX(0)}}@keyframes float{50%{transform:translateY(-10px) rotate(8deg)}}@keyframes pulse{50%{transform:translateX(6px)}}@keyframes fromc{from{opacity:0;left:50%;top:50%}}@keyframes fall{to{transform:translateY(110vh) rotate(540deg);opacity:0}}@keyframes bob{50%{translate:0 -5px}}
+.noanim *,.noanim *::before,.noanim *::after{animation:none!important;transition:none!important}
+@media (prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}}
+@media (max-width:700px){#bar .lb2,#loc{display:none}}
+@media (max-height:560px){.deco{display:none}}
+@keyframes pop3{from{opacity:0;transform:perspective(900px) rotateY(-75deg) translateY(30px)}}
+.grid .card,.flow .card{animation-name:pop3;transform-origin:left center}
+.ring{position:relative;perspective:1100px;overflow:hidden;width:100%;touch-action:pan-y;cursor:grab}.ring:active{cursor:grabbing}
+.rs{position:absolute;left:50%;top:52%;width:0;height:0;transform-style:preserve-3d;transition:transform .8s cubic-bezier(.2,.8,.2,1);animation:spinin 1.2s cubic-bezier(.2,.8,.2,1) both}
+.rs.dg{transition:none}
+@keyframes spinin{from{transform:translateZ(var(--nz)) rotateY(-220deg)}}
+.rc{position:absolute;width:var(--w);height:var(--h);left:calc(var(--w)/-2);top:calc(var(--h)/-2);transform-style:preserve-3d;cursor:pointer}
+.ri{position:absolute;inset:0;transform-style:preserve-3d;transition:transform .7s cubic-bezier(.3,.8,.3,1)}.ri.fl{transform:rotateY(180deg)}
+.fr,.bk{position:absolute;inset:0;backface-visibility:hidden;-webkit-backface-visibility:hidden;border-radius:16px;border:2px solid #CDBF99;border-left:8px solid var(--ac);background:var(--card);padding:14px 18px;display:flex;flex-direction:column;justify-content:center;gap:6px;color:var(--ink);box-shadow:0 10px 24px rgba(43,42,31,.28);font-size:clamp(17px,1.9vw,23px);line-height:1.25}
+.fr h3{margin:0;font-size:clamp(20px,2.3vw,29px)}.fr p,.bk p{margin:0}.bk{transform:rotateY(180deg);background:#FCE7B2}
+.rc:focus-visible{outline:none}.rc:focus-visible .fr,.rc:focus-visible .bk{outline:4px solid #1D4ED8;outline-offset:2px}
+.rctl{display:flex;align-items:center;justify-content:center;gap:12px;flex-wrap:wrap}.rh{font-size:clamp(14px,1.5vw,18px);font-weight:600}
+.dots{display:inline-flex;gap:6px}.dots i{width:12px;height:12px;border-radius:50%;background:#fff;border:2px solid var(--ink)}.dots i.on{background:var(--ac)}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+</style>
+</head>
+<body>
+<a class="skip" href="#deck">Lewati ke presentasi</a>
+<main id="deck" aria-label="Presentasi Pengertian Pendidikan"></main>
+<nav id="bar" aria-label="Navigasi presentasi">
+<div id="prog" aria-hidden="true"></div>
+<button class="nb go" id="prev" aria-label="Lokasi sebelumnya">◀<span class="lb2"> Prev</span></button>
+<span id="cnt" role="status" aria-live="polite">01/15</span>
+<span id="loc" aria-hidden="true"></span>
+<button class="nb go" id="next" aria-label="Lokasi berikutnya"><span class="lb2">Next </span>▶</button>
+<span class="sp"></span>
+<button class="nb" id="mpb" aria-label="Buka peta petualangan (M)">🗺️<span class="lb2"> Peta</span></button>
+<button class="nb" id="pnb" aria-pressed="false" aria-label="Pena dan laser (D / L)">✏️</button>
+<button class="nb t" id="anb" aria-pressed="true" aria-label="Animasi (A)">✨<span class="lb2"> Animasi</span></button>
+<button class="nb" id="fsb" aria-label="Layar penuh (F)">⛶</button>
+</nav>
+<div id="mb" hidden></div>
+<svg id="map" viewBox="0 0 1000 560" role="button" tabindex="0" aria-label="Peta petualangan. Tekan Enter untuk membuka"></svg>
+<dialog id="pal" aria-label="Cari lokasi"><input id="pq" type="text" placeholder="Cari lokasi atau isi… lalu Enter" aria-label="Cari lokasi" autocomplete="off"><ul id="pl" role="listbox"></ul></dialog>
+<canvas id="pen" aria-hidden="true"></canvas><div id="glow" aria-hidden="true"></div>
+<div id="hint" role="note">◀ ▶ / Spasi pindah · M peta · Ctrl+K cari · D pena · L laser · F penuh · A animasi</div>
+<script>
+const $=id=>document.getElementById(id);
+const D=(c,e)=>`<span class="deco" aria-hidden="true">${e}</span>`;
+const cd=(h,p,x='')=>`<div class="card hov" tabindex="0" ${x}><h3>${h}</h3>${p?`<p>${p}</p>`:''}</div>`;
+const LOC=['Gerbang Awal','Gua Pertanyaan','Hutan Pengertian','Bukit Nusantara','Pelabuhan Dunia','Menara Hukum','Kepulauan Disiplin','Samudra Ruang Lingkup','Kota Sistem','Pulau Enam Unsur','Persimpangan Konsep','Lembah Fungsi','Desa Kampus','Puncak Benang Merah','Mercusuar Penutup'];
+const S=[
+{t:'Cover',h:`<h1>Pengertian Pendidikan</h1><p class="sub">Landasan Pendidikan · Bab IX</p><p class="sub">Dr. Hj. Pupun Nuryani, M.Pd.</p><p class="sub" style="background:#fff;border:2px solid var(--ac);border-radius:12px;padding:8px 16px;width:fit-content">Nazwa Aulya, Raihan Akbar Kusuma, Alkhendra</p>${D(0,'🧭')}`},
+{t:'Pertanyaan pemantik',h:`<h2>Apa itu pendidikan?</h2><p class="q">Pendidikan = sekolah?</p><p class="q">Nilai dan ijazah?</p><p class="q" style="color:var(--ac)">Atau proses menjadi manusia?</p><div><button class="nb go" id="nt" aria-expanded="false" aria-controls="nta">🗝️ Buka peti jawaban</button><div class="note" id="nta" hidden style="margin-top:10px">Pendidikan = proses mengembangkan manusia, bukan hanya nilai.</div></div>${D(0,'💡')}`},
+{t:'Apa itu pendidikan?',h:`<h2>Lebih dari Sekadar Transfer Ilmu</h2><div class="grid stag">${cd('Proses berkelanjutan')}${cd('Bimbingan & interaksi')}${cd('Pengembangan potensi')}${cd('Pembentukan karakter')}</div>${D(0,'🌲')}`},
+{t:'Tokoh Indonesia',h:`<h2>Tokoh Pendidikan Indonesia</h2><div class="rw" data-k="id"></div><div><span class="chip">Ing Ngarso</span><span class="chip">Ing Madya</span><span class="chip">Tut Wuri</span></div>${D(0,'⛰️')}`},
+{t:'Tokoh dunia',h:`<h2>Tokoh Pendidikan Dunia</h2><div class="rw" data-k="dunia"></div>${D(0,'⚓')}`},
+{t:'Undang-undang',h:`<h2>Pendidikan Menurut Undang-Undang</h2><div class="grid stag">${cd('UU No. 2 Tahun 1989','Menyiapkan peserta didik untuk peran masa depan')}${cd('UU No. 20 Tahun 2003','Usaha sadar dan terencana · Peserta didik aktif mengembangkan potensi')}</div><div><span class="chip">Spiritual</span><span class="chip">Pengendalian diri</span><span class="chip">Kepribadian</span><span class="chip">Kecerdasan</span><span class="chip">Akhlak mulia</span><span class="chip">Keterampilan</span></div>${D(0,'📜')}`},
+{t:'Berbagai sudut',h:`<h2>Pendidikan dari Berbagai Sudut</h2><div class="grid stag">${cd('Psikologi','Pengembangan individu')}${cd('Sosiologi','Sosialisasi')}${cd('Antropologi','Pewarisan budaya')}${cd('Politik','Pembentukan warga negara')}${cd('Ekonomi','Investasi manusia')}</div>`},
+{t:'Ruang lingkup',h:`<h2>Seberapa Luas Pendidikan?</h2><p class="sub" style="font-size:clamp(16px,1.8vw,22px)">Menurut Redja Mudyahardjo</p><div class="grid stag">${cd('1. Arti maha luas','Pengalaman hidup yang konstruktif · Sepanjang hayat')}${cd('2. Arti sempit','Pengajaran di sekolah formal · Kurikulum')}${cd('3. Arti luas terbatas','Jalan tengah · Formal, nonformal, informal')}</div>${D(0,'🌊')}`},
+{t:'Sistem',h:`<h2>Pendidikan sebagai Sistem</h2><div><button class="nb go" id="sim">▶ Jalankan simulasi sistem</button></div><div class="flow stag">${cd('Input','Peserta didik & sumber daya')}<span class="arr" aria-hidden="true">➜</span>${cd('Process','Belajar, bimbingan, latihan')}<span class="arr" aria-hidden="true">➜</span>${cd('Output','Pengetahuan, sikap, keterampilan')}<span class="arr" aria-hidden="true">➜</span>${cd('Feedback','Evaluasi & perbaikan')}</div><div><span class="tag">Jenis input</span><br><span class="chip">Raw input</span><span class="chip">Instrumental input</span><span class="chip">Environmental input</span></div><div><span class="tag">Model CIPP (terpisah dari input–proses–output)</span><br><span class="chip">Context</span><span class="chip">Input</span><span class="chip">Process</span><span class="chip">Product</span></div>`},
+{t:'Enam unsur',h:`<h2>Enam Unsur Pendidikan</h2><div class="rw" data-k="unsur"></div>`},
+{t:'Beda konsep',h:`<h2>Pendidikan, Pengajaran, Pelatihan</h2><p class="sub">Klik kartu untuk melihat contoh di kampus.</p><div class="grid stag" id="cmp">${cd('Pendidikan','Pengembangan menyeluruh','data-x="Contoh: belajar jujur, disiplin, tanggung jawab"')}${cd('Pengajaran','Pengetahuan · intelektual','data-x="Contoh: dosen menjelaskan teori"')}${cd('Pelatihan','Keterampilan · psikomotor','data-x="Contoh: praktikum merakit perangkat"')}</div><div class="note" id="cx" aria-live="polite">Pendidikan mencakup pengajaran dan pelatihan.</div>`},
+{t:'Fungsi',h:`<h2>Fungsi Pendidikan</h2><div class="grid stag">${cd('Personalisasi','Mengembangkan pribadi')}${cd('Enkulturasi','Mewariskan budaya')}${cd('Sosialisasi & civilisasi','Hidup bermasyarakat · warga negara')}${cd('Profesionalisasi','Menyiapkan tenaga kerja')}${cd('Religiusisasi','Beriman dan bertakwa')}</div>`},
+{t:'Kehidupan mahasiswa',h:`<h2>Pendidikan dalam Kehidupan Mahasiswa</h2><div class="grid stag">${cd('Belajar teori','Pengajaran di kelas')}${cd('Praktik keterampilan','Praktikum & magang')}${cd('Kerja sama','Tugas kelompok')}${cd('Disiplin & tanggung jawab','Pendidikan karakter')}</div>${D(0,'🎓')}`},
+{t:'Benang merah',h:`<h2>Benang Merah Perjalanan</h2><div class="flow stag">${cd('Pengembangan potensi')}<span class="arr" aria-hidden="true">+</span>${cd('Pengetahuan & keterampilan')}<span class="arr" aria-hidden="true">+</span>${cd('Nilai & karakter')}<span class="arr" aria-hidden="true">=</span>${cd('Manusia berkembang utuh','','style="background:#FCE7B2"')}</div>`},
+{t:'Penutup',h:`<p class="quote">Pendidikan bukan hanya membuat manusia tahu, tetapi membantu manusia berkembang.</p><p class="sub">Terima kasih · Tanya jawab 🙋</p>${D(0,'🏁')}<div id="cfw" aria-hidden="true"></div>`}
+];
+const REG=[0,0,1,1,1,1,2,2,2,2,3,3,3,4,4],BG=['#8ED1E0','#8FD3A5','#F9BE7C','#86D6C9','#F8D074'],AC=['#0E5C73','#14623F','#B45309','#0F766E','#9A3412'],ISL=['#6CC08B','#3C9D6A','#E0B35A','#4DB6A8','#E9A23B'];
+const N=[[70,480],[180,410],[290,470],[400,400],[510,470],[620,400],[730,470],[850,420],[900,320],[790,250],[670,310],[550,240],[430,300],[310,220],[190,130]];
+const dk=$('deck'),sl=[];
+S.forEach((s,i)=>{const e=document.createElement('section'),r=REG[i];e.className='slide';e.hidden=true;e.style.setProperty('--bg',BG[r]);e.style.setProperty('--ac',AC[r]);e.setAttribute('aria-label',`Lokasi ${i+1}: ${LOC[i]}`);e.innerHTML=`<div class="scroll"><p class="kicker">📍 Lokasi ${i+1} · ${LOC[i]}</p>${s.h}</div>`;const h=e.querySelector('h1,h2,.quote');h.tabIndex=-1;dk.appendChild(e);sl.push(e)});
+// ---- map
+let sd=7;const R=()=>(sd=(sd*16807)%2147483647)/2147483647;let g='';
+for(let i=0;i<70;i++){const x=R()*980,y=R()*540;g+=`<path d="M${x} ${y}q8-8 16 0t16 0" fill="none" stroke="#fff" stroke-opacity=".6" stroke-width="2"/>`}
+N.forEach((p,i)=>{g+=`<ellipse cx="${p[0]}" cy="${p[1]}" rx="${64+R()*14}" ry="${42+R()*8}" fill="${ISL[REG[i]]}" stroke="#F2D9A0" stroke-width="7"/>`});
+N.forEach((p,i)=>{for(let k=0;k<3;k++){const x=p[0]+(k-1)*34+(i%2?10:-10),y=p[1]-16+(k%2)*30;g+=i%3===0&&k===1?`<path d="M${x-18} ${y+10}L${x} ${y-24}L${x+18} ${y+10}Z" fill="#8A7B66" stroke="#2B2A1F" stroke-width="2"/><path d="M${x-6} ${y-10}L${x} ${y-24}L${x+6} ${y-10}Z" fill="#fff"/>`:`<rect x="${x-2}" y="${y+4}" width="4" height="9" fill="#5B3A1E"/><circle cx="${x}" cy="${y}" r="9" fill="#1F7A4D" stroke="#14523A" stroke-width="2"/>`}});
+let d=`M${N[0]}`;for(let i=1;i<N.length;i++){const a=N[i-1],b=N[i];d+=`Q${a[0]+(b[0]-a[0])*.5} ${a[1]+(b[1]-a[1])*.5-(i%2?30:-30)} ${b}`}
+g+=`<path id="path" d="${d}" fill="none" stroke="#7C2D12" stroke-width="5" stroke-dasharray="3 12" stroke-linecap="round"/>`;
+g+=`<g transform="translate(930 70)"><circle r="40" fill="#FBF3DC" stroke="#2B2A1F" stroke-width="3"/><path d="M0-36L8-8 36 0 8 8 0 36-8 8-36 0-8-8Z" fill="#F28C28" stroke="#2B2A1F" stroke-width="2"/><text y="-46" text-anchor="middle" font-weight="800" font-size="20" fill="#2B2A1F">N</text></g><text class="lb" x="30" y="48" style="font:700 30px 'Palatino Linotype',Palatino,serif;fill:#14523A;stroke:#FBF3DC;stroke-width:6px;paint-order:stroke">Peta Petualangan Pendidikan</text><text x="120" y="250" font-size="40">🐙</text><text x="620" y="540" font-size="38">🚢</text><text x="40" y="190" font-size="34">⛵</text>`;
+N.forEach((p,i)=>{g+=`<g class="nd" data-i="${i}" role="button" tabindex="-1" aria-label="Lokasi ${i+1}: ${LOC[i]}"><circle cx="${p[0]}" cy="${p[1]}" r="17"/><text x="${p[0]}" y="${p[1]+5}" class="lb">${i+1}</text><text class="lb" x="${p[0]}" y="${p[1]+(p[1]>300?-26:46)}" style="font:700 18px 'Palatino Linotype',Palatino,serif">${LOC[i]}</text></g>`});
+g+=`<g id="wk"><g class="bob"><rect x="7" y="-12" width="9" height="15" rx="3" fill="#B45309" stroke="#2B2A1F" stroke-width="2"/><rect x="-9" y="-13" width="18" height="20" rx="6" fill="#14623F" stroke="#2B2A1F" stroke-width="2"/><circle cy="-22" r="9" fill="#F2C48D" stroke="#2B2A1F" stroke-width="2"/><path d="M-13-26L0-44 13-26Z" fill="#F28C28" stroke="#2B2A1F" stroke-width="2"/></g></g>`;
+const map=$('map');map.innerHTML=g;
+map.querySelectorAll('.nd .lb').forEach(t=>{if(t.tagName==='text'&&t.textContent.length<3)t.setAttribute('class','')});
+const path=$('path'),TL=path.getTotalLength(),NL=N.map(p=>{let b=0,bd=1e9;for(let l=0;l<=TL;l+=3){const q=path.getPointAtLength(l),e=(q.x-p[0])**2+(q.y-p[1])**2;if(e<bd){bd=e;b=l}}return b});
+let wl=NL[0],raf,cur=0,big=false;const rm=()=>document.body.classList.contains('noanim');
+const place=l=>{const q=path.getPointAtLength(l);$('wk').setAttribute('transform',`translate(${q.x} ${q.y})`)};
+function walk(i){cancelAnimationFrame(raf);const a=wl,b=NL[i],w=$('wk');if(rm()){wl=b;place(b);return}const t0=performance.now(),T=Math.min(1100,300+Math.abs(b-a)*1.2);w.classList.add('walking');(function f(t){const k=Math.min(1,(t-t0)/T),e=k<.5?2*k*k:1-Math.pow(-2*k+2,2)/2;wl=a+(b-a)*e;place(wl);if(k<1)raf=requestAnimationFrame(f);else w.classList.remove('walking')})(t0)}
+place(wl);
+function openMap(o){big=o;map.classList.toggle('big',o);$('mb').hidden=!o;map.querySelectorAll('.nd').forEach(n=>n.tabIndex=o?0:-1);map.tabIndex=o?-1:0;if(o)map.querySelector('.nd.cur').focus();else $('mpb').focus({preventScroll:true})}
+map.addEventListener('click',e=>{const n=e.target.closest('.nd');if(!big)openMap(true);else if(n){openMap(false);go(+n.dataset.i)}});
+map.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();e.stopPropagation();const n=e.target.closest&&e.target.closest('.nd');if(!big)openMap(true);else if(n){openMap(false);go(+n.dataset.i)}}});
+$('mb').onclick=()=>openMap(false);$('mpb').onclick=()=>openMap(!big);
+// ---- widgets
+(function(){const r=$('rad');if(!r)return;const el=['Peserta didik','Pendidik','Tujuan','Materi','Alat pendidikan','Lingkungan'];let sv='<svg viewBox="0 0 100 100" aria-hidden="true">',h='';el.forEach((n,i)=>{const a=-Math.PI/2+i*Math.PI/3,x=50+37*Math.cos(a),y=50+37*Math.sin(a);sv+=`<line x1="50" y1="50" x2="${x}" y2="${y}" stroke="#9A3412" stroke-width="1.2" stroke-dasharray="2 2"/>`;h+=`<div class="card hov" tabindex="0" style="left:${x}%;top:${y}%;animation-delay:${.15*i}s">${n}</div>`});r.innerHTML=sv+'</svg><div class="mid">Pendidikan</div>'+h})();
+$('nt').onclick=()=>{const n=$('nta'),o=n.hidden;n.hidden=!o;$('nt').setAttribute('aria-expanded',o)};
+document.querySelectorAll('#cmp .card').forEach(c=>{const f=()=>{document.querySelectorAll('#cmp .card').forEach(x=>x.classList.remove('on'));c.classList.add('on');$('cx').textContent=c.dataset.x};c.onclick=f;c.onkeydown=e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();e.stopPropagation();f()}}});
+let simT;$('sim').onclick=()=>{const cs=[...sl[8].querySelectorAll('.flow .card')];let k=0;clearInterval(simT);cs.forEach(c=>c.classList.remove('on'));simT=setInterval(()=>{cs.forEach(c=>c.classList.remove('on'));if(k>=cs.length*2){clearInterval(simT);return}cs[k%cs.length].classList.add('on');k++},900)};
+function confetti(){const w=$('cfw');w.innerHTML='';if(rm())return;const cs=['#F28C28','#14623F','#0E5C73','#fff','#B45309'];for(let i=0;i<24;i++){const s=document.createElement('span');s.className='cf';s.style.left=Math.random()*100+'%';s.style.background=cs[i%5];s.style.animationDelay=Math.random()*1.2+'s';w.appendChild(s)}}
+// ---- navigation
+function go(n,f=true){n=Math.max(0,Math.min(S.length-1,n));const dd=n>cur?'in-r':'in-l';sl.forEach((e,i)=>{e.hidden=i!==n;e.inert=i!==n;e.classList.remove('in-r','in-l');if(i===n&&n!==cur)e.classList.add(dd)});const mv=n!==cur;cur=n;$('cnt').textContent=`${String(n+1).padStart(2,'0')}/${S.length}`;$('loc').textContent=LOC[n];$('prog').style.width=((n+1)/S.length*100)+'%';$('prev').disabled=n===0;$('next').disabled=n===S.length-1;map.querySelectorAll('.nd').forEach((e,i)=>{e.classList.toggle('v',i<=n);e.classList.toggle('cur',i===n)});if(mv||f===false)walk(n);history.replaceState(null,'','#'+(n+1));pc();if(f)sl[n].querySelector('h1,h2,.quote').focus({preventScroll:true});if(n===S.length-1)confetti();$('hint').hidden=true}
+$('prev').onclick=()=>go(cur-1);$('next').onclick=()=>go(cur+1);
+function fs(){document.fullscreenElement?document.exitFullscreen():document.documentElement.requestFullscreen&&document.documentElement.requestFullscreen().catch(()=>{})}
+$('fsb').onclick=fs;
+function an(on){document.body.classList.toggle('noanim',!on);$('anb').setAttribute('aria-pressed',on)}
+$('anb').onclick=()=>an($('anb').getAttribute('aria-pressed')!=='true');
+if(matchMedia('(prefers-reduced-motion:reduce)').matches)an(false);
+// pen & laser
+const pn=$('pen'),px=pn.getContext('2d');let mode='off',dn=false;
+function rs(){pn.width=innerWidth;pn.height=innerHeight}rs();addEventListener('resize',rs);
+function pc(){px.clearRect(0,0,pn.width,pn.height)}
+function pm(m){mode=(m===mode||m==='off')?'off':m;pn.classList.toggle('on',mode==='pen');document.body.classList.toggle('laser',mode==='laser');$('pnb').setAttribute('aria-pressed',mode!=='off');if(mode==='off')pc()}
+pn.addEventListener('pointerdown',e=>{dn=true;px.beginPath();px.moveTo(e.clientX,e.clientY);pn.setPointerCapture(e.pointerId)});
+pn.addEventListener('pointermove',e=>{if(!dn)return;px.lineWidth=5;px.lineCap='round';px.strokeStyle='#e11d48';px.lineTo(e.clientX,e.clientY);px.stroke()});
+pn.addEventListener('pointerup',()=>dn=false);
+$('pnb').onclick=()=>pm(mode==='off'?'pen':mode==='pen'?'laser':'off');
+// tilt + laser follow
+let tl=null;addEventListener('pointermove',e=>{const g=$('glow');g.style.left=e.clientX+'px';g.style.top=e.clientY+'px';const c=e.target.closest&&e.target.closest('.card.hov');if(c&&!c.closest('.radial')&&!rm()){const b=c.getBoundingClientRect(),a=(e.clientX-b.left)/b.width,y=(e.clientY-b.top)/b.height;c.style.transform=`perspective(700px) rotateX(${((.5-y)*9).toFixed(1)}deg) rotateY(${((a-.5)*11).toFixed(1)}deg) translateY(-3px)`;c.style.setProperty('--gx',a*100+'%');c.style.setProperty('--gy',y*100+'%');if(tl&&tl!==c)tl.style.transform='';tl=c}else if(tl){tl.style.transform='';tl=null}});
+// palette
+const pd=$('pal'),pq=$('pq'),pl=$('pl'),tx0=S.map((s,i)=>LOC[i]+' '+s.t+' '+s.h.replace(/<[^>]+>/g,' '));let pr=[],ps=0;
+function rp(){const q=pq.value.toLowerCase().trim();pr=S.map((s,i)=>({i,t:`${i+1}. ${LOC[i]}`})).filter(o=>!q||tx0[o.i].toLowerCase().includes(q));ps=0;pl.innerHTML='';pr.forEach((o,k)=>{const li=document.createElement('li');li.textContent=o.t;li.setAttribute('role','option');li.setAttribute('aria-selected',k===0);li.onclick=()=>{pd.close();go(o.i)};pl.appendChild(li)})}
+function openPal(){pq.value='';rp();pd.showModal();pq.focus()}
+pq.oninput=rp;pq.onkeydown=e=>{const sel=()=>[...pl.children].forEach((l,k)=>l.setAttribute('aria-selected',k===ps));if(e.key==='ArrowDown'){e.preventDefault();ps=Math.min(pr.length-1,ps+1);sel()}else if(e.key==='ArrowUp'){e.preventDefault();ps=Math.max(0,ps-1);sel()}else if(e.key==='Enter'&&pr[ps]){pd.close();go(pr[ps].i)}};
+addEventListener('keydown',e=>{if(e.ctrlKey&&e.key==='k'){e.preventDefault();openPal();return}if(pd.open||e.ctrlKey||e.metaKey||e.altKey)return;const k=e.key,t=e.target,btn=t.tagName==='BUTTON';
+if(k==='Escape'){if(big)openMap(false);else pm('off');return}
+if(k==='m'||k==='M'){openMap(!big);return}
+if(big)return;
+if(k==='ArrowRight'||k==='PageDown'){e.preventDefault();go(cur+1)}else if(k==='ArrowLeft'||k==='PageUp'){e.preventDefault();go(cur-1)}
+else if(k===' '&&!btn&&!t.classList.contains('card')&&t.id!=='map'){e.preventDefault();go(cur+1)}
+else if(k==='Home'){e.preventDefault();go(0)}else if(k==='End'){e.preventDefault();go(S.length-1)}
+else if(k==='f'||k==='F')fs();else if(k==='a'||k==='A')$('anb').click();else if(k==='/'){e.preventDefault();openPal()}else if(k==='d'||k==='D')pm('pen');else if(k==='l'||k==='L')pm('laser');else if(k==='c'||k==='C')pc()});
+let tx=null;addEventListener('touchstart',e=>tx=e.touches[0].clientX,{passive:true});addEventListener('touchend',e=>{if(tx===null||big||mode==='pen')return;const d=e.changedTouches[0].clientX-tx;if(Math.abs(d)>70)go(cur+(d<0?1:-1));tx=null});
+const RD={id:[['Ki Hajar Dewantara','Menuntun kodrat anak · Sistem among','Teladan di depan, semangat di tengah, dorongan dari belakang'],['KH Ahmad Dahlan','Akhlak · Ilmu agama · Ilmu umum','Manusia berakhlak, paham agama, menguasai ilmu umum, berguna bagi masyarakat'],['Soegarda Poerbakawatja & H.A.H. Harahap','Pendidikan arti luas & arti sempit','Luas: pewarisan pengetahuan, pengalaman, keterampilan. Sempit: dekat dengan pengajaran']],
+dunia:[['M.J. Langeveld','Bimbingan menuju kedewasaan · Kewibawaan','Bimbingan orang dewasa kepada anak; kewibawaan lewat kasih sayang dan tanggung jawab'],['John Dewey','Pengalaman · Demokrasi · Kerja sama','Sekolah tempat belajar bekerja sama, berpikir kreatif, ikut mengambil keputusan'],['Paulo Freire','Dialog kritis · Hadap masalah','Menentang pendidikan gaya banking; guru dan siswa berdialog bersama'],['Jean Jacques Rousseau','Kebaikan alami · Pengaruh lingkungan','Manusia pada dasarnya baik; lingkungan memengaruhi perkembangannya']],
+unsur:[['Peserta didik','Subjek yang berkembang','Bukan objek pasif; ikut aktif dalam proses perkembangannya'],['Pendidik','Pembimbing proses','Membantu dan membimbing perkembangan peserta didik'],['Tujuan','Arah dan target','Arah yang ingin dicapai oleh pendidikan'],['Materi','Ilmu · nilai · sikap · skill','Pengetahuan, nilai, sikap, dan keterampilan yang dipelajari'],['Alat pendidikan','Sarana dan tindakan','Contoh: pembiasaan, nasihat, pengawasan, penghargaan'],['Lingkungan','Keluarga · sekolah · masyarakat','Tempat proses pendidikan berlangsung']]};
+function ring(el){const it=RD[el.dataset.k],n=it.length,st=40,W=Math.min(300,innerWidth*.6),H=Math.round(Math.min(220,W*.74)),rd=(W/2)/Math.tan(Math.PI/9)+24;let ang=0,idx=0,x0=0,a0=0,dg=false,mv=false,last=-1;
+el.innerHTML=`<div class="ring" style="height:${H+34}px;--w:${W}px;--h:${H}px"><div class="rs" style="--nz:${-rd}px"></div></div><div class="rctl"><button class="nb go" aria-label="Kartu sebelumnya">◀</button><span class="dots" aria-hidden="true">${it.map(()=>'<i></i>').join('')}</span><button class="nb go" aria-label="Kartu berikutnya">▶</button><span class="rh">Seret untuk memutar · klik kartu untuk membalik</span></div><span class="sr" aria-live="polite"></span>`;
+const rg=el.firstChild,rs=rg.firstChild,sr=el.lastChild,dots=el.querySelector('.dots'),[bp,bn]=el.querySelectorAll('.rctl .nb');
+const cs=it.map((d,i)=>{const s=document.createElement('div');s.className='rc';s.setAttribute('role','button');s.setAttribute('aria-label',d[0]+', tekan Enter untuk membalik kartu');s.style.transform=`rotateY(${i*st}deg) translateZ(${rd}px)`;s.innerHTML=`<div class="ri"><div class="fr"><h3>${d[0]}</h3><p>${d[1]}</p></div><div class="bk"><p>${d[2]}</p></div></div>`;
+s.onclick=()=>{if(mv)return;i===idx?s.firstChild.classList.toggle('fl'):spin(i)};
+s.onkeydown=e=>{const k=e.key;if(k==='Enter'||k===' '){e.preventDefault();e.stopPropagation();s.click()}else if(k==='ArrowRight'){e.preventDefault();e.stopPropagation();spin(idx+1)}else if(k==='ArrowLeft'){e.preventDefault();e.stopPropagation();spin(idx-1)}};rs.appendChild(s);return s});
+function render(){rs.style.transform=`translateZ(${-rd}px) rotateY(${ang}deg)`;let b=0,bv=1e9;cs.forEach((s,i)=>{const a=Math.abs(i*st+ang);s.style.visibility=a>95?'hidden':'visible';if(a<bv){bv=a;b=i}});idx=b;cs.forEach((s,i)=>{s.tabIndex=i===idx?0:-1;if(i!==idx)s.firstChild.classList.remove('fl')});[...dots.children].forEach((d,i)=>d.className=i===idx?'on':'');if(last!==idx){last=idx;sr.textContent=`${it[idx][0]}. ${it[idx][1]}. ${it[idx][2]}`}}
+function spin(i){i=Math.max(0,Math.min(n-1,i));ang=-i*st;render()}
+bp.onclick=()=>spin(idx-1);bn.onclick=()=>spin(idx+1);
+rg.addEventListener('pointerdown',e=>{dg=true;mv=false;x0=e.clientX;a0=ang;rs.classList.add('dg')});
+addEventListener('pointermove',e=>{if(!dg)return;const dx=e.clientX-x0;if(Math.abs(dx)>6)mv=true;ang=Math.max(-(n-1)*st,Math.min(0,a0+dx*.35));render()});
+addEventListener('pointerup',()=>{if(!dg)return;dg=false;rs.classList.remove('dg');spin(idx);setTimeout(()=>mv=false,60)});
+render()}
+document.querySelectorAll('.rw').forEach(ring);
+const hs=parseInt(location.hash.slice(1));go(hs>0?hs-1:0,false);setTimeout(()=>{$('hint').hidden=true},6000);
+</script>
+</body>
+</html>
